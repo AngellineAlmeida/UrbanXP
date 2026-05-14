@@ -1,3 +1,5 @@
+package servico_urbanxp;
+
 public class DescontoPremium implements Desconto {
     @Override
     public double calcularPrecoFinal(double precoBase) {
