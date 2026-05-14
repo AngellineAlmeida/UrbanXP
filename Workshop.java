@@ -1,47 +1,18 @@
+package dominio_urbanxp;
+
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.Scanner;
 
 public class Workshop extends Experiencia {
     private String ingredientesEMateriais;
 
-    public String getIngredientesEMateriais() {
-        return ingredientesEMateriais;
-    }
-
-    public void setIngredientesEMateriais(String ingredientesEMateriais) {
+    public Workshop(int id, String titulo, String descricao, LocalDateTime dataHora, int capacityMax, double precoBase, String ingredientesEMateriais) {
+        super(id, titulo, descricao, dataHora, capacityMax, precoBase);
         this.ingredientesEMateriais = ingredientesEMateriais;
     }
 
     @Override
-    public void criarExperiencia(int id){
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Digite o nome do evento: ");
-        String titulo = scan.nextLine();
-        System.out.println("Digite uma breve descrição do evento: ");
-        String descricao = scan.nextLine();
-        System.out.println("Digite a data e hora do evento: (dd-MM-aaaa HH:mm)");
-        String stringDataHora = scan.nextLine();
-        DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
-        LocalDateTime dataHora = LocalDateTime.parse(stringDataHora, formatador);
-        System.out.println("Digite a capacidade máxima de pessoas do evento: ");
-        int capacidadeMax = scan.nextInt();
-        System.out.println("Digite o preço base da entrada: ");
-        float preco = scan.nextFloat();
-        System.out.println("Digite os ingredientes e materiais que são necessários serem levados: ");
-        String ingredientesEMateriais = scan.nextLine();
-        setID(id);
-        setTitulo(titulo);
-        setDescricao(descricao);
-        setDataHora(dataHora);
-        setCapacidadeMax(capacidadeMax);
-        setPrecoBase(preco);
-        setIngredientesEMateriais(ingredientesEMateriais);
-    }
-
-    public void mostrarExperiencia(){
-        System.out.println("--Dados do evento--\nID: " + getID() + "\nTitulo: " + getTitulo() + "\nDescrição: " + getDescricao() + "\nData e hora: " + getDataHora()
-                + "\nCapacidade: " + getCapacidadeMax() + "\nPreço base: " + getPrecoBase() + "\nIngredientes e materiais necessários: " + getIngredientesEMateriais());
+    public void mostrarExperiencia() {
+        System.out.println(String.format("[WORKSHOP] ID: %d | %s | Materiais: %s | Data: %s | Preço Base: R$ %.2f",
+                getID(), getTitulo(), ingredientesEMateriais, getDataHora(), getPrecoBase()));
     }
 }
