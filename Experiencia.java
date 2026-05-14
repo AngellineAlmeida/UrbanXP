@@ -1,4 +1,5 @@
-import java.util.Date;
+package dominio_urbanxp;
+
 import java.time.LocalDateTime;
 
 public abstract class Experiencia {
@@ -6,58 +7,39 @@ public abstract class Experiencia {
     private String titulo;
     private String descricao;
     private LocalDateTime dataHora;
-    private int capacidadeMax;
-    private float precoBase;
+    private int capacityMax;
+    private double precoBase;
 
-    public abstract void criarExperiencia(int id);
+    private String patrocinador = "Nenhum";
+    private String brinde = "Nenhum";
 
-    public abstract void mostrarExperiencia();
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
+    public Experiencia(int id, String titulo, String descricao, LocalDateTime dataHora, int capacityMax, double precoBase) {
+        this.id = id;
         this.titulo = titulo;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public LocalDateTime getDataHora() {
-        return dataHora;
-    }
-
-    public void setDataHora(LocalDateTime dataHora) {
         this.dataHora = dataHora;
-    }
-
-    public int getCapacidadeMax() {
-        return capacidadeMax;
-    }
-
-    public void setCapacidadeMax(int capacidadeMax) {
-        this.capacidadeMax = capacidadeMax;
-    }
-
-    public float getPrecoBase() {
-        return precoBase;
-    }
-
-    public void setPrecoBase(float precoBase) {
+        this.capacityMax = capacityMax;
         this.precoBase = precoBase;
     }
 
-    public int getID() {
-        return id;
+    public Experiencia comPatrocinador(String patrocinador) {
+        this.patrocinador = patrocinador;
+        return this;
     }
 
-    public void setID(int id) {
-        this.id = id;
+    public Experiencia comBrinde(String brinde) {
+        this.brinde = brinde;
+        return this;
     }
+
+    public abstract void mostrarExperiencia();
+
+    public int getID() { return id; }
+    public String getTitulo() { return titulo; }
+    public double getPrecoBase() { return precoBase; }
+    public LocalDateTime getDataHora() { return dataHora; }
+    public String getDescricao() { return descricao; }
+    public int getCapacidadeMax() { return capacityMax; }
+    public String getPatrocinador() { return patrocinador; }
+    public String getBrinde() { return brinde; }
 }
