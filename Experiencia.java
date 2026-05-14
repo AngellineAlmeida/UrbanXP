@@ -1,13 +1,17 @@
 import java.util.Date;
+import java.time.LocalDateTime;
 
 public abstract class Experiencia {
+    private int id;
     private String titulo;
     private String descricao;
-    private Date dataHora;
+    private LocalDateTime dataHora;
     private int capacidadeMax;
-    private int precoBase;
+    private float precoBase;
 
-    public abstract void criarExperiencia();
+    public abstract void criarExperiencia(int id);
+
+    public abstract void mostrarExperiencia();
 
     public String getTitulo() {
         return titulo;
@@ -25,11 +29,11 @@ public abstract class Experiencia {
         this.descricao = descricao;
     }
 
-    public Date getDataHora() {
+    public LocalDateTime getDataHora() {
         return dataHora;
     }
 
-    public void setDataHora(Date dataHora) {
+    public void setDataHora(LocalDateTime dataHora) {
         this.dataHora = dataHora;
     }
 
@@ -41,11 +45,19 @@ public abstract class Experiencia {
         this.capacidadeMax = capacidadeMax;
     }
 
-    public int getPrecoBase() {
+    public float getPrecoBase() {
         return precoBase;
     }
 
-    public void setPrecoBase(int precoBase) {
+    public void setPrecoBase(float precoBase) {
         this.precoBase = precoBase;
+    }
+
+    public int getID() {
+        return id;
+    }
+
+    public void setID(int id) {
+        this.id = id;
     }
 }
